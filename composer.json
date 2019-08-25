@@ -1,0 +1,22 @@
+{
+    "name": "gogilo/phonebook",
+    "description": "Phonebook package for Laravel",
+    "license": "MIT",
+    "authors": [{
+        "name": "Ogilo G. D. Ouma",
+        "email": "gogilo2003@hotmail.com"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ogilo\\PhoneBook\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ogilo\\PhoneBook\\PhoneBookServiceProvider"
+            ]
+        }
+    }
+}
