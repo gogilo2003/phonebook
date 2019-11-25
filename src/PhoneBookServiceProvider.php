@@ -3,8 +3,7 @@
 namespace Ogilo\PhoneBook;
 
 use Illuminate\Support\ServiceProvider;
-use Ogilo\PhoneBook\Console\InstallCommand;
-use Ogilo\PhoneBook\Console\UpdateCommand;
+use Ogilo\PhoneBook\Console\PhoneBookCommand;
 /**
 *
 */
@@ -25,18 +24,11 @@ class PhoneBookServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		config(['admin.menu.admin-phonebook'=>[
-			'caption'=>'PhoneBook',
-			'submenu'=>[
-				'admin-phonebook-contacts'=>'Contacts',
-				'admin-phonebook-contacts-add'=>'Add',
-				'admin-phonebook-contacts-export'=>'Export ',
-			]
-		]]);
+		config(['admin.menu.admin-phonebook'=>'PhoneBook']);
 
 		if ($this->app->runningInConsole()) {
 			$this->commands([
-					// InstallCommand::class,
+					PhoneBookCommand::class,
 					// UpdateCommand::class
 				]);
 		}
@@ -49,13 +41,13 @@ class PhoneBookServiceProvider extends ServiceProvider
 		$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
 		$this->publishes([
-			__DIR__.'/../database/seeds' => database_path('seeds/vendor/admin'),
+			__DIR__.'/../database/seeds' => database_path('seeds/vendor/phonebook'),
 		], 'phonebook-database');
 
 		$this->publishes([
-			__DIR__.'/../public/img' => public_path('vendor/admin/img'),
-			__DIR__.'/../public/css' => public_path('vendor/admin/css'),
-			__DIR__.'/../public/js' => public_path('vendor/admin/js'),
+			__DIR__.'/../public/img' => public_path('vendor/phonebook/img'),
+			__DIR__.'/../public/css' => public_path('vendor/phonebook/css'),
+			__DIR__.'/../public/js' => public_path('vendor/phonebook/js'),
 			__DIR__.'/../config/phonebook.php' => config_path(''),
 		], 'phonebook-public');
 

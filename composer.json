@@ -6,7 +6,9 @@
         "name": "Ogilo G. D. Ouma",
         "email": "gogilo2003@hotmail.com"
     }],
-    "require": {},
+    "require": {
+        "jeroendesloovere/vcard": "^1.7"
+    },
     "autoload": {
         "psr-4": {
             "Ogilo\\PhoneBook\\": "src/"
